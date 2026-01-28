@@ -19,5 +19,7 @@ uv init services/notification --app
 uv init services/serviceability --app
 uv init services/payment --app
 
-uv init libs/shared-utils --lib
+uv init libs/shared --lib
 uv init packages/core --package
+
+uv add shared-utils --package api-service

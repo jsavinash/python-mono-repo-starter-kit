@@ -1,0 +1,40 @@
+[project]
+name = "python-mono-repo-starter-kit"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "typer-slim[standard]",
+    "uvicorn[standard]>=0.40.0",
+    "core",
+    "shared",
+]
+
+[tool.uv.sources]
+core = { workspace = true }
+shared = { workspace = true, editable = true }
+
+[tool.uv.workspace]
+members = [
+    "services/api-service",
+    "services/api-gateway",
+    "services/config-server",
+    "services/service-discovery",
+    "services/user",
+    "services/item",
+    "services/item-management",
+    "services/product",
+    "services/review-and-ratings",
+    "services/inventory",
+    "services/recommendations",
+    "services/offers",
+    "services/cart",
+    "services/order",
+    "services/archival",
+    "services/notification",
+    "services/serviceability",
+    "services/payment",
+    "libs/shared",
+    "packages/core",
+]
