@@ -865,7 +865,7 @@ wheels = [
 [[package]]
 name = "python-mono-repo-starter-kit"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "core" },
     { name = "rich" },

@@ -12,6 +12,35 @@ dependencies = [
     "shared",
 ]
 
+[project.scripts]
+user = "user.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [ "services/api-service",
+    "services/api-gateway",
+    "services/config-server",
+    "services/service-discovery",
+    "services/user",
+    "services/item",
+    "services/item-management",
+    "services/product",
+    "services/review-and-ratings",
+    "services/inventory",
+    "services/recommendations",
+    "services/offers",
+    "services/cart",
+    "services/order",
+    "services/archival",
+    "services/notification",
+    "services/serviceability",
+    "services/payment",
+    "libs/shared",
+    "packages/core",]
+
 [dependency-groups]
 nox = [
     "nox-uv", 
@@ -44,6 +73,9 @@ licenses = [
 debugging_tool = [
     "pysnooper",
 ]
+
+[tool.setuptools.packages.find]
+where = ["services", "pacakges", "libs"]
 
 [tool.uv.sources]
 core = { workspace = true }
