@@ -13,9 +13,11 @@ dependencies = [
     "python-dotenv>=1.2.1",
     "flask>=3.1.2",
     "flask-sqlalchemy>=3.1.1",
+    "click>=8.3.1",
 ]
 
 [project.scripts]
+cli = "cli.src.cli.flask_boilerplate:app"
 #Microservice necessary components
 api-gateway = "api_gateway.main:app"
 config-server = "config_server.main:app"
@@ -62,7 +64,9 @@ packages = [
     "services/serviceability",
     "services/payment",
     "libs/shared",
-    "packages/core",]
+    "packages/core",
+    "tools/cli"
+]
 
 [dependency-groups]
 nox = [
@@ -126,6 +130,7 @@ members = [
     "services/payment",
     "libs/shared",
     "packages/core",
+    "tools/cli",
 ]
 
 [tool.mypy]
