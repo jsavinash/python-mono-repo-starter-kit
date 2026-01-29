@@ -13,7 +13,26 @@ dependencies = [
 ]
 
 [project.scripts]
+#Microservice necessary components
+api-gateway = "api_gateway.main:app"
+config-server = "config_server.main:app"
+service-discovery = "service_discovery.main:app"
+
+#Microservice app base
 user = "user.main:app"
+item = "item.main:app"
+item-management = "item_management.main:app"
+product = "product.main:app"
+review-and-ratings = "review_and_ratings.main:app"
+inventory = "inventory.main:app"
+recommendations = "recommendations.main:app"
+offers = "offers.main:app"
+cart = "cart.main:app"
+order = "order.main:app"
+archival = "archival.main:app"
+notification = "notification.main:app"
+serviceability = "serviceability.main:app"
+payment = "payment.main:app"
 
 [build-system]
 requires = ["hatchling"]

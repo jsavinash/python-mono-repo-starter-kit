@@ -4,15 +4,11 @@ requires-python = ">=3.14"
 
 [manifest]
 members = [
-    "api-gateway",
-    "api-service",
     "archival",
     "cart",
-    "config-server",
     "core",
     "inventory",
     "item",
-    "item-management",
     "notification",
     "offers",
     "order",
@@ -20,8 +16,6 @@ members = [
     "product",
     "python-mono-repo-starter-kit",
     "recommendations",
-    "review-and-ratings",
-    "service-discovery",
     "serviceability",
     "shared",
     "user",
@@ -38,16 +32,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/96/f0/5eb65b2bb0d09ac67
 wheels = [
     { url = "https://files.pythonhosted.org/packages/38/0e/27be9fdef66e72d64c0cdc3cc2823101b80585f8119b5c112c2e8f5f7dab/anyio-4.12.1-py3-none-any.whl", hash = "sha256:d405828884fc140aa80a3c667b8beed277f1dfedec42ba031bd6ac3db606ab6c", size = 113592, upload-time = "2026-01-06T11:45:19.497Z" },
 ]
-
-[[package]]
-name = "api-gateway"
-version = "0.1.0"
-source = { virtual = "services/api-gateway" }
-
-[[package]]
-name = "api-service"
-version = "0.1.0"
-source = { virtual = "services/api-service" }
 
 [[package]]
 name = "archival"
@@ -179,11 +163,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/a2/61/f083b5ac52e505dfc
 wheels = [
     { url = "https://files.pythonhosted.org/packages/6d/c1/e419ef3723a074172b68aaa89c9f3de486ed4c2399e2dbd8113a4fdcaf9e/colorlog-6.10.1-py3-none-any.whl", hash = "sha256:2d7e8348291948af66122cff006c9f8da6255d224e7cf8e37d8de2df3bad8c9c", size = 11743, upload-time = "2025-10-16T16:14:10.512Z" },
 ]
-
-[[package]]
-name = "config-server"
-version = "0.1.0"
-source = { virtual = "services/config-server" }
 
 [[package]]
 name = "core"
@@ -339,11 +318,6 @@ source = { virtual = "services/inventory" }
 name = "item"
 version = "0.1.0"
 source = { virtual = "services/item" }
-
-[[package]]
-name = "item-management"
-version = "0.1.0"
-source = { virtual = "services/item-management" }
 
 [[package]]
 name = "jinja2"
@@ -988,11 +962,6 @@ wheels = [
 ]
 
 [[package]]
-name = "review-and-ratings"
-version = "0.1.0"
-source = { virtual = "services/review-and-ratings" }
-
-[[package]]
 name = "rich"
 version = "14.3.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1030,11 +999,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/87/44/90fa543014c45560cae1fffc63ea059fb3575ee6e1cb654562197e5d16fb/ruff-0.14.14-py3-none-win_amd64.whl", hash = "sha256:3dde1435e6b6fe5b66506c1dff67a421d0b7f6488d466f651c07f4cab3bf20fd", size = 11630486, upload-time = "2026-01-22T22:30:10.852Z" },
     { url = "https://files.pythonhosted.org/packages/9e/6a/40fee331a52339926a92e17ae748827270b288a35ef4a15c9c8f2ec54715/ruff-0.14.14-py3-none-win_arm64.whl", hash = "sha256:56e6981a98b13a32236a72a8da421d7839221fa308b223b9283312312e5ac76c", size = 10920448, upload-time = "2026-01-22T22:30:15.417Z" },
 ]
-
-[[package]]
-name = "service-discovery"
-version = "0.1.0"
-source = { virtual = "services/service-discovery" }
 
 [[package]]
 name = "serviceability"

@@ -6,7 +6,7 @@ app = Typer(add_completion=False)
 
 @app.command()
 def main():
-    print("Hello from order!")
+    print("Hello from review-and-ratings!")
     printAnything()
     addTwoNumbers(1,2)
 
