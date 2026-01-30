@@ -1,16 +1,56 @@
 from typer import Typer
-from core.print import printAnything
-from shared.numberUtils import addTwoNumbers
+from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException
+from starlette.middleware.cors import CORSMiddleware
 
-app = Typer(add_completion=False)
+from item.src.api.errors.http_error import http_error_handler
+from item.src.api.errors.validation_error import http422_error_handler
+from item.src.api.routes.api import router as api_router
+from item.src.core.config import get_app_settings
+from item.src.core.events import create_start_app_handler, create_stop_app_handler
+import uvicorn
 
 
-@app.command()
-def main():
-    print("Hello from item!")
-    printAnything()
-    addTwoNumbers(1, 2)
+def get_application() -> FastAPI:
+    settings = get_app_settings()
+
+    settings.configure_logging()
+
+    application = FastAPI(**settings.fastapi_kwargs)
+
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.allowed_hosts,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    application.add_event_handler(
+        "startup",
+        create_start_app_handler(application, settings),
+    )
+    application.add_event_handler(
+        "shutdown",
+        create_stop_app_handler(application),
+    )
+
+    application.add_exception_handler(HTTPException, http_error_handler)
+    application.add_exception_handler(RequestValidationError, http422_error_handler)
+
+    #application.include_router(api_router, prefix=settings.api_prefix)
+
+    return application
 
 
-if __name__ == "__main__":  # pragma: no cover
-    app()
+
+execute = Typer(add_completion=False)
+@execute.command()
+def main() -> None:
+    """Run Flask App."""
+    app = get_application()
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True, log_level="info") 
+
+if __name__ == "__main__":
+    execute()
