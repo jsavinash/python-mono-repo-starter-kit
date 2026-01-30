@@ -85,7 +85,11 @@ def docs(s: Session) -> None:
 
 @session(venv_backend="none")
 def docs_check_urls(s: Session) -> None:
-    s.run("mkdocs", "build", env=doc_env | {"HTMLPROOFER_VALIDATE_EXTERNAL_URLS": str(True)})
+    s.run(
+        "mkdocs",
+        "build",
+        env=doc_env | {"HTMLPROOFER_VALIDATE_EXTERNAL_URLS": str(True)},
+    )
 
 
 @session(venv_backend="none")

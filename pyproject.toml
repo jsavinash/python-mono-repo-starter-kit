@@ -3,17 +3,32 @@ name = "python-mono-repo-starter-kit"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+
 requires-python = ">=3.14"
 dependencies = [
     "rich",
     "typer-slim[standard]",
-    "uvicorn[standard]>=0.40.0",
-    "core",
-    "shared",
     "python-dotenv>=1.2.1",
     "flask>=3.1.2",
     "flask-sqlalchemy>=3.1.1",
     "click>=8.3.1",
+    "environ>=1.0",
+    "flask-migrate>=4.1.0",
+    "sqlalchemy>=2.0.46",
+    "core",
+    "shared",
+    "packages",
+    "psycopg2-binary>=2.9.11",
+    "psycopg2>=2.9.11",
+    "flask-db>=0.4.1",
+    "flask-debugtoolbar>=0.16.0",
+    "flask-secrets>=0.1.0",
+    "flask-static-digest>=0.4.1",
+    "gunicorn>=24.1.1",
+    "jinja2>=3.1.6",
+    "psycopg>=3.3.2",
+    "werkzeug>=3.1.5",
+    "setuptools>=80.10.2",
 ]
 
 [project.scripts]
@@ -24,7 +39,7 @@ config-server = "config_server.main:app"
 service-discovery = "service_discovery.main:app"
 
 #Microservice app base
-user = "user.main:app"
+user = "user.src.main:command_app"
 item = "item.main:app"
 item-management = "item_management.main:app"
 product = "product.main:app"
@@ -40,7 +55,7 @@ serviceability = "serviceability.main:app"
 payment = "payment.main:app"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.26"] # Specifies the build dependencies
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
@@ -102,11 +117,12 @@ debugging_tool = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["services", "pacakges", "libs"]
+where = ["services", "packages", "libs", "tools"]
 
 [tool.uv.sources]
 core = { workspace = true }
 shared = { workspace = true, editable = true }
+tools = { workspace = true }
 
 [tool.uv.workspace]
 members = [
@@ -139,7 +155,7 @@ strict = true
 enable_error_code = ["deprecated", "exhaustive-match", "explicit-override"]
 
 [tool.ruff]
-src = ["services", "pacakges", "libs"]
+src = ["services", "packages", "libs", "tools"]
 exclude = [
     ".bzr",
     ".direnv",
